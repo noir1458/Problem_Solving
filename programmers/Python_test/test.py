@@ -1,16 +1,13 @@
-def solution(n):
-    num = 1
-    tmp = []
-    while(True):
-        if n%num == 0:
-            tmp += [(num,n//num)]
-        if num == n:
-            break
-        num += 1
-    return len(tmp)
+def solution(my_string):
+    my_num = ""
+    for tmp in my_string:
+        if tmp.isdigit() == True:
+            my_num += tmp
+    list_num = list(map(int,my_num))
+    return list_num
 
 def main():
-    print(solution(20))
+    print(solution("hi12392"))
 
 if __name__ == "__main__":
     main()
