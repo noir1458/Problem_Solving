@@ -1,13 +1,11 @@
-def solution(my_string):
-    my_num = ""
-    for tmp in my_string:
-        if tmp.isdigit() == True:
-            my_num += tmp
-    list_num = list(map(int,my_num))
-    return list_num
+def solution(numbers):
+    tmp = {"zero":'0', "one":'1', "two":'2', "three":'3', "four":'4', "five":'5', "six":'6', "seven":'7', "eight":'8', "nine":'9'}
+    for k,v in tmp.items():
+        numbers = numbers.replace(k,v)
+    return numbers
 
 def main():
-    print(solution("hi12392"))
-
+    k = "onetwothreefourfivesixseveneightnine"
+    print(solution(k))
 if __name__ == "__main__":
     main()
