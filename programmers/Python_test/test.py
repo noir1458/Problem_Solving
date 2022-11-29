@@ -1,11 +1,28 @@
-def solution(numbers):
-    tmp = {"zero":'0', "one":'1', "two":'2', "three":'3', "four":'4', "five":'5', "six":'6', "seven":'7', "eight":'8', "nine":'9'}
-    for k,v in tmp.items():
-        numbers = numbers.replace(k,v)
-    return numbers
+def solution(my_str, n):
+    answer = []
+    # 6개씩 저장하고 더한다
+    # 마지막에 6개 안되면 끊기
+    count = 0
+    while(True):
+        if count == len(my_str):
+            break
+        tmp = ''
+        countlen6 = 0
+        while(True):
+            tmp += my_str[count]
+            count += 1
+            countlen6 += 1
+            if countlen6 == 6 or count == len(my_str):
+                break
+        answer += [tmp]
+        
+    return answer
 
 def main():
-    k = "onetwothreefourfivesixseveneightnine"
-    print(solution(k))
+    my_str = "abc1Addfggg4556b"
+    n = 6
+    print(solution(my_str,n))
+    return None
+
 if __name__ == "__main__":
     main()
