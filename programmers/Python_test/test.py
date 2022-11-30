@@ -1,28 +1,27 @@
-def solution(my_str, n):
-    answer = []
-    # 6개씩 저장하고 더한다
-    # 마지막에 6개 안되면 끊기
-    count = 0
-    while(True):
-        if count == len(my_str):
-            break
-        tmp = ''
-        countlen6 = 0
-        while(True):
-            tmp += my_str[count]
-            count += 1
-            countlen6 += 1
-            if countlen6 == 6 or count == len(my_str):
-                break
-        answer += [tmp]
-        
-    return answer
+def solution(polynomial):
+    type_x = []
+    type_notx = []
+    for tmp in polynomial.split(' '):
+        if tmp.isalnum():
+            if 'x' in tmp:
+                if tmp == 'x':
+                    type_x += [1]
+                else:
+                    type_x += [int(tmp[:-1])]
+            else:
+                type_notx += [int(tmp)]
+    sum_notx = sum(type_notx)
+    sum_x = sum(type_x)
+    if sum_notx == 0 and sum_x == 0:
+        return str(0)
+    if sum_notx == 0:
+        return str(sum_x)+'x'
+    if sum_x == 0:
+        return str(sum_notx)
+    return str(sum_x) + 'x + ' + str(sum_notx)
 
 def main():
-    my_str = "abc1Addfggg4556b"
-    n = 6
-    print(solution(my_str,n))
+    print(solution("x"))
     return None
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
