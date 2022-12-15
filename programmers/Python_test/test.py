@@ -1,25 +1,21 @@
-def gcd(a,b):
-    while b>0:
-        a,b = b,a%b
-    return a
-def solution(a, b):
-    tmp = gcd(a,b)
-    b2 = b//tmp
-    
-    while(True):
-        if b2%2 == 0:
-            b2 = b2//2
-        else:
-            break
-    while(True):
-        if b2%5 == 0:
-            b2 = b2//5
-        else:
-            break
-    print(b2)
-    return 1 if b2 == 1 else 2
+def solution(babbling):
+    tmp_list = []
+    for tmp in babbling:
+        str1 = tmp.replace('aya',' ')
+        str2 = str1.replace('ye',' ')
+        str3 = str2.replace('woo',' ')
+        str4 = str3.replace('ma',' ')
+        tmp_list += [str4]
+    count = 0
+    for tmp in tmp_list:
+        for k in tmp:
+            if k != ' ':
+                break
+            count += 1
+    print(tmp_list)
+    return count
 def main():
-    print(solution(12,21))
-    return None
-if __name__ == "__main__":
+    score = ["ayaye", "uuuma", "ye", "yemawoo", "ayaa"]
+    print(solution(score))
+if __name__=="__main__":
     main()
