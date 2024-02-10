@@ -13,4 +13,4 @@ for tmp in input:
     
     R = b % cycle_dict[a%10]
     if R == 0: R = cycle_dict[a%10]
-    print(a**(R)%10 if a**(R)%10 != 0 else 10)
+    print(a**(R)%10 if a**(R)%10 != 0 else 10) 
