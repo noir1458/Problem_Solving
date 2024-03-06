@@ -11,7 +11,6 @@ ans = ''
 str_len = len(input[1])
 
 # 돌면서 길이를 재는데
-# 
 for idx in range(str_len):
     # 처음에 빈칸을 더한다(파일이름은 소문자와 점으로 되어있음)
     ans += ' '
