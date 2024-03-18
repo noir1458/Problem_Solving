@@ -1,4 +1,4 @@
-import sys
+'''import sys
 num = sys.stdin.readline()
 input = lambda : sys.stdin.readline().split()
 l = list(map(int,input()))
@@ -18,3 +18,9 @@ for tmp in l:
 
 convert = list(map(str,convert))
 print(' '.join(convert))
+'''
+n=int(input())
+x=list(map(int,input().split()))
+xt=list(sorted(set(x)))
+xt={xt[i]:i for i in range(len(xt))}
+print([xt[i] for i in x])
