@@ -52,23 +52,20 @@ def hanoi(from_n,to_n,n):
 #   hanoi(1,A,C) 하나를 c로 옮기고
 #   hanoi(2,B,C,A) 다시 2개를 c로 옮기면 된다
 
-
-def hanoi(n,from_n,to_n,via_n,isprint,c):
+def hanoi(n,from_n,to_n,via_n):
     if n==1:
-        c += 1
-        if isprint:
-            print(from_n,to_n)
-            return c
-    hanoi(n-1,from_n,via_n,to_n,isprint,c)
-    hanoi(1,from_n,to_n,via_n,isprint,c)
-    hanoi(n-1,via_n,to_n,from_n,isprint,c)
-    return c
+        print(from_n,to_n)
+        return None
+    hanoi(n-1,from_n,via_n,to_n)
+    hanoi(1,from_n,to_n,via_n)
+    hanoi(n-1,via_n,to_n,from_n)
+    return None
 
 def main():
     n = int(input())
-    c = 0
-    if n<=20: isprint=True
-    print(hanoi(n,1,3,2,isprint,c))
+    print(2**n-1) # 하노이탑의 이동횟수
+    if n <= 20:
+        hanoi(n,1,3,2)
     return None
 
 main()
