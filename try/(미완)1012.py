@@ -1,73 +1,76 @@
-from collections import deque
-
-def data1(n):
-    if '\x1a' in n: n = n.replace('\x1a','')
-    if '\n' in n: n = n.replace('\n','')
-    return n
 import sys
-input = sys.stdin.readlines()
-input = list(map(data1,input))
-# 테스트 케이스 공백문자 이용하여 경우 나누기
-case_tmp = []
-idx_check = []
-for idx in range(len(input)):
-    if input[idx].count(' ') == 2:
-        idx_check += [idx]
-for idx in range(len(idx_check)):
-    if len(idx_check)-1 == idx:
-       case_tmp += [input[idx_check[idx]:]]
-    else:
-        case_tmp += [input[idx_check[idx]:idx_check[idx+1]]]
+input = sys.stdin.readlines
+l = list(map(lambda x:x.rstrip().replace('\x1a',''),input()))
 
-# 좌표 이용해서 배추심기(0 -> 1)
-# 2차원 배열 만들기
-cases = []
-for tmp in case_tmp:
-    W,H,N = map(int,tmp[0].split(' '))
-    N_list = [[0 for w in range(W)] for h in range(H)]
+T = int(l[0])
+del l[0]
 
-    for tmp2 in tmp[1:]:
-        x,y = map(int,tmp2.split())
-        N_list[y][x] = 1
-    cases += [N_list]
-
-    for _ in N_list:
-        print(_)
-    print()
-
-
-# 필요한 지렁이수 찾기
-for case_tmp in cases:
-    worm = 0
-    H = int(len(case_tmp))
-    W = int(len(case_tmp[0]))
-
-    # 이동 구현 [상,하,좌,우]
-    dx = [0,0,1,-1]
-    dy = [1,-1,0,0]
+def need_worm(g):
+    dx = [1,0,-1,0]
+    dy = [0,1,0,-1]
+    visited = []
     
-    # 체크한 좌표 확인
-    is_1 = []
+    now = [0,0]
+    count = 0
 
-    for x in range(W):
-        for y in range(H):
-            # 이전에 체크하지 않은 1일 경우 해당 좌표부터 상하좌우로 체크
-            if [x,y] in is_1:
-                continue
-            if case_tmp[y][x] == 1:
-                is_1 += [[x,y]]
+    print(g)
 
-                queue = deque([(0,0)])
-                while queue:
-                    # 범위에 벗어나지 않게 이동
-                    for i in range(4):
-                        next_x,next_y = x+dx[i],y+dy[i]
-                        if 0 <= next_x < W and 0 <= next_y < H:
-                            if case_tmp[next_y][next_x] == 1:
-                                if [next_x,next_y] not in is_1 : is_1 += [[next_x,next_y]]
-                        
+    while((now != [len(g[0])-1,len(g)-1]) and (g[-1][-1] == 0)):
+        find1 = []
+        find2 = []
+        find1.append(now)
+        find2.append(now)
+        visited.append(now)
 
 
+        # 1인지점 하나 잡고, bfs로 전부 find1에 넣기
+        while(len(find1) != 0):
+            x = find1.pop()
+
+            for i in range(4):
+                x[0] += dx[i]
+                x[1] += dy[i]
+                if (g[x[1]][x[0]] == 1) and (now not in visited) and (0<=x[0]<len(g[0])) and (0<=x[1]<len(g)):
+                    visited.append(x)
+                    find2.append(x)
+            
+        find2 = find1
+
+        print(now,find2)
+        print(g)
+
+        # 벌레수+1
+        count += 1
+
+        # find1에 있는 좌표 전부 0으로 바꾸기
+        for x,y in find1:
+            g[y][x] = 0
+
+        # now 위치 이동, visited에 있다면 다음칸으로, 범위밖이라면 다음 행으로, 맨마지막이면 끝
+        while(True):
+            # 방문하지 않은 좌표거나, 맨 끝 도달시
+            if (now not in visited) or (now == [len(g[0])-1,len(g)-1]):
+                break
+            now[0] += 1
+            if not (0<=now[0]<len(g[0])): # x좌표 자리올림
+                now[0] = 0
+                now[1] += 1
+
+    print(count)
+    return None
+
+while(True):
+    if (len(l) == 0): break
+    M,N,K = map(int,l[0].split())
+    del l[0]
+    ground = [[0 for x in range(M)] for y in range(N)]
+
+    while(True):
+        if (len(l[0].split()) != 3) or (len(l) == 0): break
+        x,y = map(int,l[0].split())
+        ground[y][x] = 1
+        del l[0]
+    
+    need_worm(ground)
 
 
-    print(worm)
