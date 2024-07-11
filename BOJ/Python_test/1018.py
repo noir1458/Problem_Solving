@@ -1,3 +1,5 @@
+# 재채점되어 틀린 코드
+
 import sys
 # 입력
 lines = sys.stdin.readlines()
@@ -90,9 +92,3 @@ for a,b in start_point:
     cnt_list += [cnt]
 print(min(cnt_list))
         
-        
-
-
-
-
-
