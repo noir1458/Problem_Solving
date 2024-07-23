@@ -7,4 +7,4 @@ matrix = inp[1:]
 print(N,matrix)
 
 for tmp in inp[1:]:
-    for tmp in 
+    for tmp in
