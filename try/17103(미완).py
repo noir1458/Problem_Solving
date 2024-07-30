@@ -10,11 +10,22 @@ def g_partition(n):
             for j in range(2*i,n+1,i):
                 table[j] = False
 
-    for i in range(2,n//2+1):
-        n1 = i
-        n2 = n-i
-        if table[n1] and table[n2]:
+    t = []
+    for i in range(n):
+        if table[i]: t.append(i)
+    
+    i=0
+    j=len(t)-1
+    while(i<=j):
+        if t[i] + t[j] == n:
             c += 1
+            i += 1
+            j -= 1
+        elif t[i] + t[j] > n:
+            j -= 1
+        else:
+            i += 1
+
     return c
 
 for _ in range(int(input())):
