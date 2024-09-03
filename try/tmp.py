@@ -1,6 +1,11 @@
-A = int(input())
-B = int(input())
-C = int(input())
+import sys,collections
+input = sys.stdin.readline
+q = collections.deque()
 
-print(A+B-C)
-print(int(str(A)+str(B))-C)
+for tmp in range(int(input())):
+    inp = int(input())
+    if inp!=0:
+        q.append(inp)
+    else:
+        q.pop()
+print(sum(q))
