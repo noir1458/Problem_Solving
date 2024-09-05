@@ -9,25 +9,17 @@ int main() {
 	ios::sync_with_stdio(0); // fastio
 	// 풀이 작성
 
-	long long A,B;
-	
-	cin >> A >> B;
-	if (A>B){
-		int tmp=0;
-		tmp = A;
-		A = B;
-		B = tmp;
-	}
+	int N = 0;
+	cin >> N;
 
-	if (A==B){
-		cout <<0;
-	}
-	else{
-	cout << B-A-1;
-	}
-	cout << '\n';
-	for (int i=A+1;i<B;i++){
-		cout << i << ' ';
+	for (int i=0;i<N;i++){
+		for (int a=0;a<i;a++){
+			cout << ' ';
+		}
+		for (int a=0;a<N-i;a++){
+			cout << '*';
+		}
+		cout << '\n';
 	}
 
 	return 0;

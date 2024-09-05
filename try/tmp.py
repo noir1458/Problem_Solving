@@ -1,11 +1,12 @@
-import sys,collections
-input = sys.stdin.readline
-q = collections.deque()
+N = int(input())
 
-for tmp in range(int(input())):
-    inp = int(input())
-    if inp!=0:
-        q.append(inp)
-    else:
-        q.pop()
-print(sum(q))
+for i in range(N):
+    print(' '*i,end='')
+    print('*'*(N-i),end='')
+    print('*'*(N-i-1),end='')
+    print()
+for i in range(N-2,-1,-1):
+    print(' '*i,end='')
+    print('*'*(N-i),end='')
+    print('*'*(N-i-1),end='')
+    print()
