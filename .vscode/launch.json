@@ -4,11 +4,12 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "LLDB Debug",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "name": "Launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
       "args": [],
-      "cwd": "${workspaceFolder}",
-      "preLaunchTask": "C++ build for clang++"
+      "preLaunchTask": "g++ build active file",
+      "stdio": [null, null, null],
+      "terminal": "integrated"
     }
   ]
 }

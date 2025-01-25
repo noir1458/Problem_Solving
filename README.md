@@ -2,4 +2,4 @@
 
 BOJ, Programmers, Atcoder
 
-240900~ 어려운것 위주로 주석 더해서 저장하기
+풀면서 코드 저장용

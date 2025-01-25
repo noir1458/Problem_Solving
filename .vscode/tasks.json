@@ -1,37 +1,45 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "type": "shell",
-        "label": "Build and Run C++",
-        "command": "clang++",
-        "args": [
-          "-std=c++17",                // C++17 표준 사용
-          "-g",                        // 디버깅 정보 포함
-          "${file}",                   // 현재 열려 있는 파일
-          "-o",
-          "${fileDirname}/${fileBasenameNoExtension}" // 실행 파일 이름
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true            // 기본 빌드 태스크로 설정
-        },
-        "presentation": {
-          "clear": true,
-          "reveal": "always"           // 실행 시 터미널 표시
-        },
-        "problemMatcher": [],
-        "detail": "Build and run the current C++ file."
+  // command + shift + b 로 빌드하기
+  // cmd + shift + d 로 디버깅
+
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "g++ build active file",
+      "command": "/usr/bin/g++",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.out",
+
+        // 1. execute .out file
+
+        "&&", //to join building and running of the file
+        "${fileDirname}/${fileBasenameNoExtension}.out",
+
+        //2. file input
+
+        "<",
+        "${fileDirname}/sample_input.txt"
+
+        //3. file output
+        /*
+              ">",
+              "${fileDirname}/sample_output.txt"
+              */
+      ],
+      "options": {
+        "cwd": "/usr/bin"
       },
-      {
-        "type": "shell",
-        "label": "Run Executable",
-        "command": "chmod +x ${fileDirname}/${fileBasenameNoExtension} && ${fileDirname}/${fileBasenameNoExtension} < ${fileDirname}/input.txt",
-        "group": "test",
-        "presentation": {
-          "clear": true,
-          "reveal": "always"
-        }
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
-    ]
-  }
+    }
+  ]
+}
