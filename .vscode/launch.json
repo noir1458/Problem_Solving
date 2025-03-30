@@ -2,14 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "lldb",
+      "type": "java",
+      "name": "Main",
       "request": "launch",
-      "name": "Launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-      "args": [],
-      "preLaunchTask": "g++ build active file",
-      "stdio": [null, null, null],
-      "terminal": "integrated"
+      "mainClass": "Main",
+      "projectName": "Problem_Solving_38cbee4f"
+    },
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
     }
   ]
 }
