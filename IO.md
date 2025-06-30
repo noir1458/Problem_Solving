@@ -1,4 +1,5 @@
 ## java
+
 ```
 import java.util.*;
 import java.lang.*;
@@ -6,15 +7,16 @@ import java.io.*;
 
 public class Main {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	
+
 	public static void main (String[] args) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		
+
 	}
 }
 ```
-  
+
 ## cpp
+
 ```
 #include <iostream>
 #include <bits/stdc++.h>
@@ -28,8 +30,9 @@ int main() {
 	return 0;
 }
 ```
-  
+
 ## python
+
 ```
 import sys
 input = sys.stdin.read
