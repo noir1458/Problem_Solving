@@ -1,0 +1,29 @@
+# C/C++ 컴파일 결과
+*.o          # 오브젝트 파일
+*.out        # 일반적인 실행 파일 (Linux/macOS)
+*.obj        # 오브젝트 파일 (Windows)
+*.exe        # 실행 파일 (Windows)
+*.dll        # 동적 링크 라이브러리 (Windows)
+*.lib        # 정적 라이브러리 (Windows)
+*.so         # 공유 오브젝트 (Linux)
+*.dylib      # 동적 라이브러리 (macOS)
+*.dSYM/      # 디버그 심볼 (macOS)
+
+# Java 컴파일 결과
+*.class      # 컴파일된 자바 바이트코드
+*.jar        # 자바 아카이브 파일
+*.war        # 웹 애플리케이션 아카이브 파일
+*.ear        # 엔터프라이즈 애플리케이션 아카이브 파일
+target/      # Maven 빌드 디렉토리
+build/       # Gradle 빌드 디렉토리
+
+# Visual Studio Code 관련 파일 (선택 사항)
+.vscode/     # VS Code 설정 파일 (공유하고 싶지 않다면 포함)
+
+# 기타 임시/생성 파일
+*~           # 일부 에디터가 생성하는 백업 파일
+*.bak        # 백업 파일
+*.tmp        # 임시 파일
+*.log        # 로그 파일
+*.swp        # Vim 스왑 파일
+.DS_Store    # macOS 특정 파일
