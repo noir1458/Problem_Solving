@@ -24,9 +24,9 @@ public class Main {
 using namespace std;
 
 int main() {
-	cin.tie(0); cout.tie(0); // fastio
-	ios::sync_with_stdio(0); // fastio
-	// 풀이 작성
+	cin.tie(0); cout.tie(0);
+	ios::sync_with_stdio(0);
+
 	return 0;
 }
 ```
