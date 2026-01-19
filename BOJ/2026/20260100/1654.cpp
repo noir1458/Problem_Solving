@@ -16,30 +16,30 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    ll x,y; cin>>x>>y;
-
-    ll z = (y*100) / x;
-
-    if (z>=99){
-        cout << -1 << "\n";
-        return 0;
+    ll K,N; cin>>K>>N;
+    vector<ll> v(K);
+    rep(i,0,K){
+        cin>>v[i];
     }
 
-    ll l=0,r=1000000000,res=-1;
+    ll l=1,r=*max_element(all(v)),m=0;
+    ll res=0;
+    while (l<=r){
+        m = (l+r)/2;
+        ll c= 0;
 
-    while (l<=r)
-    {
-        ll m = (l+r) / 2;
-        ll next_z = ((y+m)*100 / (x+m));
+        rep(i,0,K){
+            c += v[i]/m;
+        }
 
-        if(next_z > z){
-            res = m;
-            r = m-1;
-        } else {
+        if (c >= N){
             l = m+1;
+            res = m;
+            
+        } else {
+            r = m-1;
         }
     }
     cout << res;
-
     return 0;
 }

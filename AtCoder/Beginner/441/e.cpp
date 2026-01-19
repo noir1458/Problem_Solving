@@ -15,17 +15,8 @@ const int MOD = 998244353; // or 1e9 + 7
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
-    int n;cin>>n;
-    set<int> s;
-    rep(i,0,n){
-        int x; cin>>x;
-        s.insert(x);
-    }
 
-    for(auto e : s){
-        cout << e << " ";
-    }
+    
 
     return 0;
 }
