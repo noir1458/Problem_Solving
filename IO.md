@@ -21,6 +21,18 @@ public class Main {
 #include <bits/stdc++.h>
 using namespace std;
 
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    return 0;
+}
+```
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
 using ll = long long;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
