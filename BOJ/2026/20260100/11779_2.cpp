@@ -4,13 +4,14 @@ using namespace std;
 int n,m;
 struct Edge{
     int vertex,cost;
-    bool operator<(const Edge& other) const{
+    bool operator<(const Edge &other) const{
         return cost > other.cost;
     }
 };
+
 vector<vector<Edge>> g;
-vector<int> parent;
 vector<int> dist;
+vector<int> parent;
 
 void dijkstra(int start, int end){
     priority_queue<Edge, vector<Edge>> pq;
@@ -20,10 +21,10 @@ void dijkstra(int start, int end){
         // pop
         Edge curr = pq.top(); pq.pop();
         // check
-        if (dist[curr.vertex] < curr.cost) continue;
+        if (curr.cost > dist[curr.vertex]) continue;
         // relaxation
         for(const auto &next:g[curr.vertex]){
-            if (dist[next.vertex] > curr.cost + next.cost){
+            if(dist[next.vertex] > curr.cost + next.cost){
                 dist[next.vertex] = curr.cost + next.cost;
                 parent[next.vertex] = curr.vertex;
                 pq.push({next.vertex,dist[next.vertex]});
@@ -37,10 +38,11 @@ int main() {
     cin.tie(0);
 
     cin >> n >> m;
+
     g.resize(n+1,vector<Edge> (0));
-    parent.resize(n+1,-1);
     dist.resize(n+1,1e9);
-    
+    parent.resize(n+1, -1);
+
     for(int i=0;i<m;i++){
         int a,b,c; cin>>a>>b>>c;
         g[a].push_back({b,c});
@@ -49,8 +51,9 @@ int main() {
     int start,end; cin>>start>>end;
     dist[start] = 0;
     dijkstra(start,end);
-    
+
     cout << dist[end] << "\n";
+
     vector<int> res;
     for(int i=end;i!=-1;i=parent[i]){
         res.push_back(i);
