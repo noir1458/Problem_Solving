@@ -1,3 +1,4 @@
 import sys
-input = sys.stdin.read
-inp = input().replace('\x1a','').splitlines()
+it = iter(sys.stdin.buffer.read().split())
+
+N = next(it)
